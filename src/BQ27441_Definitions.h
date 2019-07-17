@@ -170,3 +170,12 @@ Arduino Uno (any 'duino should do)
 #define BQ27441_OPCONFIG_RMFCC    (1<<4)
 #define BQ27441_OPCONFIG_BATLOWEN (1<<2)
 #define BQ27441_OPCONFIG_TEMPS    (1<<0)
+
+/////////////////////////////////////////
+// Gas Gauge State Subclass            //
+/////////////////////////////////////////
+// Configuration block offsets
+#define BQ27441_STATE_DESIGN_CAPACITY   0x0A //10
+#define BQ27441_STATE_DESIGN_ENERGY     0x0C //12
+#define BQ27441_STATE_TERM_VOLTAGE      0x10 //16
+#define BQ27441_STATE_TAPER_RATE        0x1B //27

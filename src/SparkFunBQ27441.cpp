@@ -52,11 +52,47 @@ bool BQ27441::setCapacity(uint16_t capacity)
 {
 	// Write to STATE subclass (82) of BQ27441 extended memory.
 	// Offset 0x0A (10)
-	// Design capacity is a 2-byte piece of data - MSB first
+	// Design capacity is a 2-byte data block - MSB first
 	uint8_t capMSB = capacity >> 8;
 	uint8_t capLSB = capacity & 0x00FF;
 	uint8_t capacityData[2] = {capMSB, capLSB};
 	return writeExtendedData(BQ27441_ID_STATE, 10, capacityData, 2);
+}
+
+// configures battery design energy
+bool BQ27441::setEnergy(uint16_t energy)
+{
+	// Write to STATE subclass (82) of BQ27441 extended memory.
+	// Offset 0x0C (12)
+	// Design energy is a 2-byte data block - MSB first
+	uint8_t msb = energy >> 8;
+	uint8_t lsb = energy & 0x00FF;
+	uint8_t energyData[2] = {msb, lsb};
+	return writeExtendedData(BQ27441_ID_STATE, 12, energyData, 2);
+}
+
+// configures battery terminate voltage
+bool BQ27441::setTerminateVoltage(uint16_t termVoltage)
+{
+	// Write to STATE subclass (82) of BQ27441 extended memory.
+	// Offset 0x10 (16)
+	// Terminate voltage is a 2-byte data block - MSB first
+	uint8_t msb = termVoltage >> 8;
+	uint8_t lsb = termVoltage & 0x00FF;
+	uint8_t data[2] = {msb, lsb};
+	return writeExtendedData(BQ27441_ID_STATE, BQ27441_STATE_TERM_VOLTAGE, data, 2);
+}
+
+// configures battery taper rate
+bool BQ27441::setTaperRate(uint16_t taperRate)
+{
+	// Write to STATE subclass (82) of BQ27441 extended memory.
+	// Offset 0x1B (27)
+	// Terminate voltage is a 2-byte data block - MSB first
+	uint8_t msb = taperRate >> 8;
+	uint8_t lsb = taperRate & 0x00FF;
+	uint8_t data[2] = {msb, lsb};
+	return writeExtendedData(BQ27441_ID_STATE, BQ27441_STATE_TAPER_RATE, data, 2);
 }
 
 /*****************************************************************************

@@ -95,6 +95,12 @@ public:
 		@return true if capacity successfully set.
 	*/
 	bool setCapacity(uint16_t capacity);
+
+	bool setEnergy(uint16_t energy);
+
+	bool setTerminateVoltage(uint16_t termVoltage);
+
+	bool setTaperRate(uint16_t taperRate);
 	
 	/////////////////////////////
 	// Battery Characteristics //
